@@ -37,22 +37,22 @@ namespace MiDominicanaApp.ViewModels
                     Fuels.Add(new Fuel()
                     {
                         Name = "GasolinaPremium",
-                        Price = Convert.ToDouble(fuels.GasolinaPremium)
+                        Price = Convert.ToDouble(fuels.PremiumGasoline)
                     });
                     Fuels.Add(new Fuel()
                     {
                         Name = "GasolinaRegular",
-                        Price = Convert.ToDouble(fuels.GasolinaRegular)
+                        Price = Convert.ToDouble(fuels.RegularGasoline)
                     });
                     Fuels.Add(new Fuel()
                     {
                         Name = "GasoilOptimo",
-                        Price = Convert.ToDouble(fuels.GasoilOptimo)
+                        Price = Convert.ToDouble(fuels.OptimalDiesel)
                     });
                     Fuels.Add(new Fuel()
                     {
                         Name = "GasoilRegular",
-                        Price = Convert.ToDouble(fuels.GasoilRegular)
+                        Price = Convert.ToDouble(fuels.RegularDiesel)
                     });
                     Fuels.Add(new Fuel()
                     {
@@ -62,12 +62,12 @@ namespace MiDominicanaApp.ViewModels
                     Fuels.Add(new Fuel()
                     {
                         Name = "GasLicuadoPetroleoGLP",
-                        Price = Convert.ToDouble(fuels.GasLicuadoPetroleoGLP)
+                        Price = Convert.ToDouble(fuels.PetroleumLiquidGas)
                     });
                     Fuels.Add(new Fuel()
                     {
                         Name = "GasNaturalVehicularGNV",
-                        Price = Convert.ToDouble(fuels.GasNaturalVehicularGNV)
+                        Price = Convert.ToDouble(fuels.NaturalGas)
                     });
                     Console.WriteLine("Hello");
                 }
