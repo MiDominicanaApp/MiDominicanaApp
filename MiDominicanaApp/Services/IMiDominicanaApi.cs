@@ -5,7 +5,7 @@ using Refit;
 
 namespace MiDominicanaApp.Services
 {
-    public interface IFuelApi
+    public interface IMiDominicanaApi
     {
         // http://eladio37-001-site1.ftempurl.com/api/Fuels
         [Get("/api/Fuels")]

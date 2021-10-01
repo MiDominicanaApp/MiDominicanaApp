@@ -19,14 +19,13 @@
     <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
     <PackageReference Include="Refit" Version="6.0.94" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
   <ItemGroup>
     <None Remove="Prism.Unity.Forms" />
     <None Remove="Refit" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\ProvinceDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
