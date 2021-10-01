@@ -2,8 +2,10 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiDominicanaApp.Views.HomePage"
+             xmlns:local="clr-namespace:MiDominicanaApp.Views"
              Title="MiDominicana App"
-            xmlns:local="clr-namespace:MiDominicanaApp.Views"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
             >
     <TabbedPage.Children>
         <local:FuelsPage/>

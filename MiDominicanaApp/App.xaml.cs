@@ -16,14 +16,14 @@ namespace MiDominicanaApp
         protected override void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync("NavigationPage/Home");
+            NavigationService.NavigateAsync("Home");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>("Home");
-            containerRegistry.RegisterForNavigation<FuelsPage, FuelsViewModel>("Fuels");
+            //containerRegistry.RegisterForNavigation<FuelsPage, FuelsViewModel>("Fuels");
+            containerRegistry.RegisterForNavigation<NavigationPage>();
         }
     }
 }
