@@ -4,8 +4,10 @@ using System.Threading.Tasks;
 
 namespace MiDominicanaApp.Services
 {
-    public interface IFuelApiService
+    public interface IMiDominicanaApiService
     {
         Task<HttpResponseMessage> GetFuelsAsync();
+        Task<HttpResponseMessage> GetCurrenciesAsync();
+        Task<HttpResponseMessage> GetProvincesAsync();
     }
 }
