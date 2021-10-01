@@ -9,10 +9,10 @@ using Xamarin.Essentials;
 
 namespace MiDominicanaApp.ViewModels
 {
-    public class FuelViewModel : BaseViewModel
+    public class FuelsViewModel : BaseViewModel
     {
         public ObservableCollection<Fuel> Fuels { get; set; } = new ObservableCollection<Fuel>() { };
-        public FuelViewModel(IFuelApiService fuelApiService)
+        public FuelsViewModel(IFuelApiService fuelApiService)
         {
             _fuelApiService = fuelApiService;
             LoadFuelsAsync();
