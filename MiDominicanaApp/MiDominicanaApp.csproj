@@ -17,6 +17,7 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
+    <PackageReference Include="Refit" Version="6.0.94" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,5 +27,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Prism.Unity.Forms" />
+    <None Remove="Refit" />
   </ItemGroup>
 </Project>
