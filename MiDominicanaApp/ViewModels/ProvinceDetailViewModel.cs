@@ -1,5 +1,6 @@
 ﻿using MiDominicanaApp.Models;
 using MiDominicanaApp.Services;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,16 +13,15 @@ namespace MiDominicanaApp.ViewModels
     class ProvinceDetailViewModel : BaseViewModel
     {
         IMiDominicanaApiService _miDominicanaApiService;
+        IPageDialogService _pageDialog;
+
         public Province province { get; set; } = new Province();
-        public ProvinceDetailViewModel(IMiDominicanaApiService miDominicanaApiService)
+
+        public ProvinceDetailViewModel(IMiDominicanaApiService miDominicanaApiService, IPageDialogService pageDialog)
         {
             _miDominicanaApiService = miDominicanaApiService;
+            _pageDialog = pageDialog;
             GetProvince();
-        }
-
-        private async void OnLoad()
-        {
-            await GetProvince();
         }
 
         private async Task GetProvince()
@@ -41,12 +41,9 @@ namespace MiDominicanaApp.ViewModels
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await App.Current.MainPage.DisplayAlert("Alerta", "No hay conexión a internet.", "OK");
+                    await _pageDialog.DisplayAlertAsync("Alerta", "No hay conexión a internet.", "OK");
                 });
             }
-
-
-            //await _alertService.Alert("Error", "NO HAY CONEXION A INTERNET", "OK");
         }
     }
 }
