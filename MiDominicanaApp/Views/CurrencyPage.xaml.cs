@@ -17,7 +17,6 @@ namespace MiDominicanaApp.Views
         public CurrencyPage()
         {
             InitializeComponent();
-            BindingContext = new CurrencyViewModel(new MiDominicanaApiService());
         }
     }
 }
