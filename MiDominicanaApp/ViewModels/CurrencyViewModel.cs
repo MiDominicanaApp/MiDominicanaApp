@@ -1,5 +1,6 @@
 ﻿using MiDominicanaApp.Models;
 using MiDominicanaApp.Services;
+using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,17 +15,14 @@ namespace MiDominicanaApp.ViewModels
     {
 
         IMiDominicanaApiService _currencyApiService;
-        public Currency currency { get; set; } = new Currency();
-        public ObservableCollection<Currency> CurrenciesList { get; set; } = new ObservableCollection<Currency>();
-        public CurrencyViewModel(IMiDominicanaApiService currencyApiService)
+        IPageDialogService _pageDialog;
+        public ObservableCollection<Currency> CurrenciesList { get; set; } = new ObservableCollection<Currency>() { };
+        public CurrencyViewModel(IMiDominicanaApiService currencyApiService, IPageDialogService pageDialog)
         {
             _currencyApiService = currencyApiService;
+            _pageDialog = pageDialog;
             LoadCurrenciesAsync();
-        }
-        private async void OnLoad()
-        {
-            await LoadCurrenciesAsync();
-        }
+        }        
 
         private async Task LoadCurrenciesAsync()
         {
@@ -34,8 +32,15 @@ namespace MiDominicanaApp.ViewModels
                 if (currencyResponse != null)
                 {
                     var responseString = await currencyResponse.Content.ReadAsStringAsync();
-                    currency = JsonSerializer.Deserialize<Currency>(responseString, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-                   
+                    var currencies = JsonSerializer.Deserialize<Currency>(responseString, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+                    CurrenciesList.Add(new Currency()
+                    {
+                        Name = currencies.Name,
+                        Purchase = Convert.ToDouble(currencies.Purchase),
+                        Sale = Convert.ToDouble(currencies.Sale)
+                    });
+
                 }
             }
             else

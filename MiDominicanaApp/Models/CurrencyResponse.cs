@@ -5,10 +5,15 @@ using System.Text.Json.Serialization;
 
 namespace MiDominicanaApp.Models
 {
-    public class Currency
+    public class CurrencyResponse
     {
+        [JsonPropertyName("name")]
         public string Name { get; set; }
+
+        [JsonPropertyName("purchase")]
         public double Purchase { get; set; }
+
+        [JsonPropertyName("sale")]
         public double Sale { get; set; }
     }
 }

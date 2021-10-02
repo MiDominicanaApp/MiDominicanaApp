@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MiDominicanaApp.Views.CurrencyPage" xmlns:prism="http://prismlibrary.com"
+<ContentPage
+    x:Class="MiDominicanaApp.Views.CurrencyPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
     Title="Divisas"
     prism:ViewModelLocator.AutowireViewModel="True">
     <StackLayout VerticalOptions="CenterAndExpand">
@@ -29,8 +31,8 @@
                         <Label
                             Grid.Row="0"
                             Grid.Column="0"
-                            Text="{Binding Name}"
                             Grid.ColumnSpan="2"
+                            Text="{Binding Name}"
                             VerticalOptions="CenterAndExpand" />
                         <Label
                             Grid.Row="0"
