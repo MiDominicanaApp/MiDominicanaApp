@@ -21,11 +21,7 @@ namespace MiDominicanaApp.ViewModels
             _currencyApiService = currencyApiService;
             LoadCurrenciesAsync();
         }
-        private async void OnLoad()
-        {
-            await LoadCurrenciesAsync();
-        }
-
+       
         private async Task LoadCurrenciesAsync()
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)

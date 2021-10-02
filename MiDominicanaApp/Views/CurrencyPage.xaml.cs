@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MiDominicanaApp.Services;
+using MiDominicanaApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,7 @@ namespace MiDominicanaApp.Views
         public CurrencyPage()
         {
             InitializeComponent();
+            BindingContext = new CurrencyViewModel(new MiDominicanaApiService());
         }
     }
 }
