@@ -1,4 +1,5 @@
 ﻿using System;
+using MiDominicanaApp.Services;
 using MiDominicanaApp.ViewModels;
 using MiDominicanaApp.Views;
 using Prism;
@@ -22,8 +23,9 @@ namespace MiDominicanaApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>("Home");
-            //containerRegistry.RegisterForNavigation<FuelsPage, FuelsViewModel>("Fuels");
-            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<FuelsPage, FuelsViewModel>("Fuels");
+            containerRegistry.RegisterForNavigation<ProvinceDetailPage, ProvinceDetailViewModel>("Province");
+            containerRegistry.Register<IMiDominicanaApiService, MiDominicanaApiService>();
         }
     }
 }

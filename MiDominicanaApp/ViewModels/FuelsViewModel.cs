@@ -5,29 +5,30 @@ using System.Threading.Tasks;
 using MiDominicanaApp.Models;
 using MiDominicanaApp.Services;
 using Prism.Navigation;
+using Prism.Services;
 using Xamarin.Essentials;
 
 namespace MiDominicanaApp.ViewModels
 {
     public class FuelsViewModel : BaseViewModel
     {
-        public ObservableCollection<Fuel> Fuels { get; set; } = new ObservableCollection<Fuel>() { };
-        public FuelsViewModel(IMiDominicanaApiService fuelApiService)
-        {
-            _fuelApiService = fuelApiService;
-            LoadFuelsAsync();
-        }
 
-        private async void OnLoad()
+        IMiDominicanaApiService _miDominicanaApiService;
+        IPageDialogService _pageDialog;
+
+        public ObservableCollection<Fuel> Fuels { get; set; } = new ObservableCollection<Fuel>() { };
+        public FuelsViewModel(IMiDominicanaApiService miDominicanaApiService, IPageDialogService pageDialog)
         {
-            await LoadFuelsAsync();
+            _miDominicanaApiService = miDominicanaApiService;
+            _pageDialog = pageDialog;
+            LoadFuelsAsync();
         }
 
         public async Task LoadFuelsAsync()
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                var response = await _fuelApiService.GetFuelsAsync();
+                var response = await _miDominicanaApiService.GetFuelsAsync();
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
@@ -69,18 +70,16 @@ namespace MiDominicanaApp.ViewModels
                         Name = "GasNaturalVehicularGNV",
                         Price = Convert.ToDouble(fuels.NaturalGas)
                     });
-                    Console.WriteLine("Hello");
                 }
             }
             else
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await App.Current.MainPage.DisplayAlert("Alerta", "No hay conexión a internet.", "OK");
+                    await _pageDialog.DisplayAlertAsync("Alerta", "No hay conexión a internet.", "OK");
                 });
             }
         }
 
-        IMiDominicanaApiService _fuelApiService;
     }
 }

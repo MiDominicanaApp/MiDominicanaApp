@@ -17,7 +17,6 @@ namespace MiDominicanaApp.Views
         public ProvinceDetailPage()
         {
             InitializeComponent();
-            BindingContext = new ProvinceDetailViewModel(new MiDominicanaApiService());
         }
     }
 }
