@@ -12,7 +12,7 @@ namespace MiDominicanaApp.ViewModels
     public class FuelsViewModel : BaseViewModel
     {
         public ObservableCollection<Fuel> Fuels { get; set; } = new ObservableCollection<Fuel>() { };
-        public FuelsViewModel(IFuelApiService fuelApiService)
+        public FuelsViewModel(IMiDominicanaApiService fuelApiService)
         {
             _fuelApiService = fuelApiService;
             LoadFuelsAsync();
@@ -81,6 +81,6 @@ namespace MiDominicanaApp.ViewModels
             }
         }
 
-        IFuelApiService _fuelApiService;
+        IMiDominicanaApiService _fuelApiService;
     }
 }

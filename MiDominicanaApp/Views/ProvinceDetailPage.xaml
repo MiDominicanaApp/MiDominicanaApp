@@ -1,12 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MiDominicanaApp.Views.ProvinceDetailPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="MiDominicanaApp.Views.ProvinceDetailPage"
+             Title="Detalle Provincia"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True">
+    <ScrollView>
+        <Grid Padding="30" RowDefinitions="*,Auto,Auto,Auto,Auto,Auto,Auto,Auto, Auto" ColumnDefinitions="Auto, Auto">
+            <Label HorizontalTextAlignment="Center" Grid.ColumnSpan="3" Grid.Row="0" FontSize="44" FontAttributes="Bold">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="mi" TextColor="Black"/>
+                        <Span Text="Dominicana" TextColor="Red"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Image
+                Grid.ColumnSpan="3"
+                Grid.Row="1"
+                WidthRequest="350"
+                HeightRequest="350"
+                Aspect="AspectFill"
+                Source="{Binding province.ImagePath}"
+                BackgroundColor="Black"
+                />
+
+            <Label
+                Margin="10"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.Row="2"
+                FontSize="36"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Text="{Binding province.Name}"
+                />
+
+
+            <Label  Grid.ColumnSpan="3" Grid.Row="3" Margin="10,5">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontAttributes="Bold" FontSize="Title" Text="Capital: " TextColor="Black"/>
+                        <Span Text="{Binding province.City}" FontSize="24" TextColor="Gray"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label  Grid.ColumnSpan="3" Grid.Row="4" Margin="10,5" TextType="Html">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontAttributes="Bold" FontSize="Title" Text="Superficie: " TextColor="Black"/>
+                        <Span Text="{Binding province.Surface, StringFormat='{0:#,#.00}'}" FontSize="24" TextColor="Gray"/>
+                        <Span Text=" km cuadrados" FontSize="24" TextColor="Gray"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label  Grid.ColumnSpan="3" Grid.Row="5" Margin="10, 5">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontAttributes="Bold" FontSize="Title" Text="Población: " TextColor="Black"/>
+                        <Span Text="{Binding province.Population, StringFormat='{0:#,#}'}" FontSize="24" TextColor="Gray"/>
+                        <Span Text=" Habitantes" FontSize="24" TextColor="Gray"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label  Grid.ColumnSpan="3" Grid.Row="6" Margin="10, 5">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontAttributes="Bold" FontSize="Title" Text="Densidad: " TextColor="Black"/>
+                        <Span Text="{Binding province.Density, StringFormat='{0:#}'}" FontSize="24" TextColor="Gray"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+                Margin="10, 5"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.Row="7"
+                FontSize="Title"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Text="{Binding province.Name, StringFormat='Sobre {0:F0}'}"
+                />
+
+            <Label
+                Margin="10, 5"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.Row="8"
+                FontSize="20"
+                TextColor="Black"
+                LineBreakMode="CharacterWrap"
+                Text="{Binding province.Description}"
+                />
+        </Grid>
+    </ScrollView>
 </ContentPage>
