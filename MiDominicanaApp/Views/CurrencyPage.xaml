@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiDominicanaApp.Views.CurrencyPage" xmlns:prism="http://prismlibrary.com"
+    Title="Divisas"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Label
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            FontAttributes="Bold"
+            FontSize="44"
+            HorizontalTextAlignment="Center">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="mi" TextColor="Black" />
+                    <Span Text="Dominicana" TextColor="Red" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <CollectionView
+            Margin="20"
+            HeightRequest="600"
+            ItemsSource="{Binding CurrenciesList}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="Auto,Auto,Auto">
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="{Binding Name}"
+                            Grid.ColumnSpan="2"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            Text="{Binding Purchase}"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="4"
+                            Text="{Binding Sale}"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

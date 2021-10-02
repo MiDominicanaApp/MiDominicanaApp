@@ -13,7 +13,7 @@
             >
     <TabbedPage.Children>
         <local:FuelsPage IconImageSource="gas"/>
-        <ContentPage Title="Divisas" IconImageSource="exchange"/>
+        <local:CurrencyPage IconImageSource="exchange"/>
         <local:ProvinceDetailPage IconImageSource="repdom"/>
     </TabbedPage.Children>
 </TabbedPage>
