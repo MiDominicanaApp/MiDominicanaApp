@@ -7,7 +7,20 @@
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True"
     >
-    <StackLayout Orientation="Vertical" VerticalOptions="End" >
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Label
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            FontAttributes="Bold"
+            FontSize="44"
+            HorizontalTextAlignment="Center">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="mi" TextColor="Black" />
+                    <Span Text="Dominicana" TextColor="Red" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
   <CollectionView ItemsSource="{Binding Fuels}" 
                 HeightRequest="200"
                   Margin="20">
