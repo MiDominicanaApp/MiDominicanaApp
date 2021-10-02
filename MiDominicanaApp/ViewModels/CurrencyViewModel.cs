@@ -16,12 +16,18 @@ namespace MiDominicanaApp.ViewModels
 
         IMiDominicanaApiService _currencyApiService;
         IPageDialogService _pageDialog;
+
+        public string Loading { get; set; }
         public ObservableCollection<Currency> CurrenciesList { get; set; } = new ObservableCollection<Currency>() { };
         public CurrencyViewModel(IMiDominicanaApiService currencyApiService, IPageDialogService pageDialog)
         {
             _currencyApiService = currencyApiService;
             _pageDialog = pageDialog;
-            LoadCurrenciesAsync();
+            Loading = "Loading...";
+            Task.Run(async () => {
+                await LoadCurrenciesAsync();
+                Loading = "";
+            });
         }        
 
         private async Task LoadCurrenciesAsync()
@@ -32,22 +38,26 @@ namespace MiDominicanaApp.ViewModels
                 if (currencyResponse != null)
                 {
                     var responseString = await currencyResponse.Content.ReadAsStringAsync();
-                    var currencies = JsonSerializer.Deserialize<Currency>(responseString, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                    var currencyList = JsonSerializer.Deserialize<List<CurrencyResponse>>(responseString, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-                    CurrenciesList.Add(new Currency()
+
+                    foreach (var currency in currencyList)
                     {
-                        Name = currencies.Name,
-                        Purchase = Convert.ToDouble(currencies.Purchase),
-                        Sale = Convert.ToDouble(currencies.Sale)
-                    });
-
+                        CurrenciesList.Add(new Currency()
+                        {
+                            Name = currency.Name,
+                            Purchase = Convert.ToDouble(currency.Purchase),
+                            Sale = Convert.ToDouble(currency.Sale)
+                        });
+                    }
+                    
                 }
             }
             else
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await App.Current.MainPage.DisplayAlert("Alerta", "No hay conexión a internet.", "OK");
+                    await _pageDialog.DisplayAlertAsync("Alerta", "No hay conexión a internet.", "OK");
                 });
             }
         }

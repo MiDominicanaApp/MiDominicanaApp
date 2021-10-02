@@ -21,6 +21,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label Text="{Binding Loading}" HorizontalTextAlignment="Center"/>
   <CollectionView ItemsSource="{Binding Fuels}" 
                 HeightRequest="200"
                   Margin="20">

@@ -20,6 +20,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label Text="{Binding Loading}" HorizontalTextAlignment="Center"/>
         <CollectionView
             Margin="20"
             HeightRequest="600"
