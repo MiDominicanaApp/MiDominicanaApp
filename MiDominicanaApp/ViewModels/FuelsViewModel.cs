@@ -15,13 +15,17 @@ namespace MiDominicanaApp.ViewModels
 
         IMiDominicanaApiService _miDominicanaApiService;
         IPageDialogService _pageDialog;
-
+        public string Loading { get; set; }
         public ObservableCollection<Fuel> Fuels { get; set; } = new ObservableCollection<Fuel>() { };
         public FuelsViewModel(IMiDominicanaApiService miDominicanaApiService, IPageDialogService pageDialog)
         {
             _miDominicanaApiService = miDominicanaApiService;
             _pageDialog = pageDialog;
-            LoadFuelsAsync();
+            Loading = "Loading...";
+            Task.Run(async () => {
+                await LoadFuelsAsync();
+                Loading = "";
+            });
         }
 
         public async Task LoadFuelsAsync()

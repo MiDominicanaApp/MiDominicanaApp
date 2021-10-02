@@ -7,7 +7,6 @@ namespace MiDominicanaApp.Services
 {
     public interface IMiDominicanaApi
     {
-        // http://eladio37-001-site1.ftempurl.com/api/Fuels
         [Get("/api/Fuels")]
         Task<HttpResponseMessage> GetFuelsAsync();
 

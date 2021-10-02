@@ -22,9 +22,10 @@ namespace MiDominicanaApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>("Home");
-            containerRegistry.RegisterForNavigation<FuelsPage, FuelsViewModel>("Fuels");
-            containerRegistry.RegisterForNavigation<ProvinceDetailPage, ProvinceDetailViewModel>("Province");
+            containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(NavigationConstants.Paths.Home);
+            containerRegistry.RegisterForNavigation<FuelsPage, FuelsViewModel>(NavigationConstants.Paths.Fuels);
+            containerRegistry.RegisterForNavigation<CurrencyPage, CurrencyViewModel>(NavigationConstants.Paths.Fuels);
+            containerRegistry.RegisterForNavigation<ProvinceDetailPage, ProvinceDetailViewModel>(NavigationConstants.Paths.Province);
             containerRegistry.Register<IMiDominicanaApiService, MiDominicanaApiService>();
         }
     }

@@ -7,6 +7,7 @@ namespace MiDominicanaApp.Models
 {
     public class CurrencyResponse
     {
+
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
@@ -15,5 +16,6 @@ namespace MiDominicanaApp.Models
 
         [JsonPropertyName("sale")]
         public double Sale { get; set; }
+
     }
 }

@@ -21,7 +21,7 @@ namespace MiDominicanaApp.ViewModels
         {
             _miDominicanaApiService = miDominicanaApiService;
             _pageDialog = pageDialog;
-            GetProvince();
+            Task.Run(async () => { await GetProvince(); });
         }
 
         private async Task GetProvince()
