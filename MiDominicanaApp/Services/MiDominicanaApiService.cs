@@ -5,7 +5,7 @@ using Refit;
 
 namespace MiDominicanaApp.Services
 {
-    public class MiDominicana : IMiDominicanaApiService
+    public class MiDominicanaApiService : IMiDominicanaApiService
     {
         public async Task<HttpResponseMessage> GetCurrenciesAsync()
         {
@@ -15,6 +15,11 @@ namespace MiDominicanaApp.Services
         public async Task<HttpResponseMessage> GetFuelsAsync()
         {
             return await RestService.For<IMiDominicanaApi>("http://eladio37-001-site1.ftempurl.com").GetFuelsAsync();
+        }
+
+        public async Task<HttpResponseMessage> GetProvinceDetailAsync(int ID)
+        {
+            return await RestService.For<IMiDominicanaApi>("http://eladio37-001-site1.ftempurl.com").GetProvinceDetailAsync(ID);
         }
 
         public async Task<HttpResponseMessage> GetProvincesAsync()

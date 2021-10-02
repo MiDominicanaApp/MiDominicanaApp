@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MiDominicanaApp.ViewModels;
+using MiDominicanaApp.Services;
 
 namespace MiDominicanaApp.Views
 {
@@ -15,6 +17,7 @@ namespace MiDominicanaApp.Views
         public ProvinceDetailPage()
         {
             InitializeComponent();
+            BindingContext = new ProvinceDetailViewModel(new MiDominicanaApiService());
         }
     }
 }
