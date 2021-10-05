@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiDominicanaApp.Views.ProvincesPage"
+             Title="Provincias" 
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="30" RowDefinitions="Auto,Auto,*" ColumnDefinitions="Auto">
+                <Label HorizontalTextAlignment="Center" Grid.Row="0" FontSize="44" FontAttributes="Bold" Padding="0,10,0,30">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="mi" TextColor="Black"/>
+                            <Span Text="Dominicana" TextColor="Red"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Grid.Row="1" TextColor="Black" FontSize="Title" Margin="5" VerticalTextAlignment="Center" Text="Provincias y Municipios" HorizontalTextAlignment="Center"/>
+
+
+                <Label Grid.Row="2" Grid.ColumnSpan="3" Text="{Binding Loading}" HorizontalTextAlignment="Center"/>
+
+                <CollectionView
+                    Grid.Row="2"
+                    ItemsSource="{Binding Provinces}" 
+                    Margin="5">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="Auto,Auto, Auto" ColumnDefinitions="Auto,*" Padding="0,10" ColumnSpacing="20">
+                                <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding CityImagePath}" Aspect="AspectFit" WidthRequest="75" HeightRequest="75"  BackgroundColor="Transparent"/>
+                                <Label Grid.Column="1" Grid.Row="0" FontSize="Title" FontAttributes="Bold" Text="{Binding Name}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="1" Grid.Row="1" FontSize="Subtitle" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"  Text="{Binding City, StringFormat='Ciudad: {0:F0}'}" />
+                                <BoxView Grid.Row="2"  Grid.Column="1" HeightRequest="1" Color="LightGray" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

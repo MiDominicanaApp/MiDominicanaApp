@@ -10,37 +10,35 @@ using Xamarin.Essentials;
 
 namespace MiDominicanaApp.ViewModels
 {
-    class ProvinceDetailViewModel : BaseViewModel
+    public class ProvincesViewModel : BaseViewModel
     {
         IMiDominicanaApiService _miDominicanaApiService;
         IPageDialogService _pageDialog;
         public string Loading { get; set; }
+        public List<Province> Provinces { get; set; } = new List<Province>();
 
-        public Province Province { get; set; } = new Province();
-
-        public ProvinceDetailViewModel(IMiDominicanaApiService miDominicanaApiService, IPageDialogService pageDialog)
+        public ProvincesViewModel(IMiDominicanaApiService miDominicanaApiService, IPageDialogService pageDialog)
         {
             _miDominicanaApiService = miDominicanaApiService;
             _pageDialog = pageDialog;
             Loading = "Loading...";
             Task.Run(
-                async () => { 
-                    await LoadProvince();
+                async () =>
+                {
+                    await LoadProvinces();
                     Loading = "";
                 });
         }
 
-        private async Task LoadProvince()
+        private async Task LoadProvinces()
         {
-            var rnd = new Random();
-            var provinceId = rnd.Next(1, 32);
-            if(Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                var provinceResponse = await _miDominicanaApiService.GetProvinceDetailAsync(provinceId);
+                var provinceResponse = await _miDominicanaApiService.GetProvincesAsync();
                 if (provinceResponse != null)
                 {
                     var responseContent = await provinceResponse.Content.ReadAsStringAsync();
-                    Province = JsonSerializer.Deserialize<Province>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                    Provinces = JsonSerializer.Deserialize<List<Province>>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
                 }
             }
             else

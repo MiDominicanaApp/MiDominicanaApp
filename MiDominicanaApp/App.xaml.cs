@@ -25,7 +25,8 @@ namespace MiDominicanaApp
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(NavigationConstants.Paths.Home);
             containerRegistry.RegisterForNavigation<FuelsPage, FuelsViewModel>(NavigationConstants.Paths.Fuels);
             containerRegistry.RegisterForNavigation<CurrencyPage, CurrencyViewModel>(NavigationConstants.Paths.Fuels);
-            containerRegistry.RegisterForNavigation<ProvinceDetailPage, ProvinceDetailViewModel>(NavigationConstants.Paths.Province);
+            containerRegistry.RegisterForNavigation<ProvincesPage, ProvincesViewModel>(NavigationConstants.Paths.Provinces);
+            containerRegistry.RegisterForNavigation<ProvinceDetailPage, ProvinceDetailViewModel>(NavigationConstants.Paths.ProvinceDetail);
             containerRegistry.Register<IMiDominicanaApiService, MiDominicanaApiService>();
         }
     }

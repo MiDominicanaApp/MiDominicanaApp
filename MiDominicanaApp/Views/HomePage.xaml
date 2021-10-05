@@ -14,6 +14,6 @@
     <TabbedPage.Children>
         <local:FuelsPage IconImageSource="gas"/>
         <local:CurrencyPage IconImageSource="exchange"/>
-        <local:ProvinceDetailPage IconImageSource="repdom"/>
+        <local:ProvincesPage IconImageSource="repdom"/>
     </TabbedPage.Children>
 </TabbedPage>
