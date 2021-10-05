@@ -7,32 +7,41 @@
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True"
     >
-    <StackLayout VerticalOptions="CenterAndExpand">
-        <Label
-            Grid.Row="0"
-            Grid.ColumnSpan="3"
-            FontAttributes="Bold"
-            FontSize="44"
-            HorizontalTextAlignment="Center">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="mi" TextColor="Black" />
-                    <Span Text="Dominicana" TextColor="Red" />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label Text="{Binding Loading}" HorizontalTextAlignment="Center"/>
-  <CollectionView ItemsSource="{Binding Fuels}" 
+
+    <ScrollView>
+        <Grid Padding="30" RowDefinitions="Auto,Auto,*,*" ColumnDefinitions="Auto">
+            <Label HorizontalTextAlignment="Center" Grid.ColumnSpan="3" Grid.Row="0" FontSize="44" FontAttributes="Bold" Padding="0,10,0,30">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="mi" TextColor="Black"/>
+                        <Span Text="Dominicana" TextColor="Red"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Loading}" HorizontalTextAlignment="Center"/>
+            <Label Grid.Row="1" Grid.ColumnSpan="2" FontSize="36" TextColor="Black" Text="{Binding Date}" HorizontalOptions="Center" Padding="0,20,0,20"/>
+
+            <CollectionView 
+                Grid.Column="0"
+                Grid.Row="2"
+                ItemsSource="{Binding Fuels}" 
                 HeightRequest="200"
-                  Margin="20">
-    <CollectionView.ItemTemplate>
-          <DataTemplate>
-            <Grid RowDefinitions="Auto,Auto,Auto">
-                <Label Grid.Column="0" Grid.Row="0" Text="{Binding Name}"/>
-                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Price}"/>
-            </Grid>
-          </DataTemplate>
-    </CollectionView.ItemTemplate>
-</CollectionView>  
-        </StackLayout>
+                Margin="5">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="1*,Auto" ColumnDefinitions="Auto,Auto,*" Padding="0,10">
+                            <Label Grid.Row="0" FontSize="30" FontAttributes="Bold" Grid.Column="0" Text="•" TextColor="Red" HorizontalTextAlignment="Start"/>
+                            <Label Grid.Row="0" FontSize="24" FontAttributes="Bold" Grid.Column="1" Text="{Binding Name}"/>
+                            <Label Grid.Row="0" FontSize="24" Grid.Column="2" HorizontalTextAlignment="End"  Text="{Binding Price, StringFormat='RD$ {0:#,#.00}'}"/>
+                            <BoxView Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" Color="LightGray" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Grid.Row="3" HorizontalOptions="Center"  VerticalOptions="Center" HorizontalTextAlignment="Center" FontSize="30" Text="{Binding UpdateMessage}" />
+        </Grid>
+    </ScrollView>
+
 </ContentPage>
