@@ -14,17 +14,22 @@ namespace MiDominicanaApp.ViewModels
     {
         IMiDominicanaApiService _miDominicanaApiService;
         IPageDialogService _pageDialog;
+        public string Loading { get; set; }
 
-        public Province province { get; set; } = new Province();
+        public Province Province { get; set; } = new Province();
 
         public ProvinceDetailViewModel(IMiDominicanaApiService miDominicanaApiService, IPageDialogService pageDialog)
         {
             _miDominicanaApiService = miDominicanaApiService;
             _pageDialog = pageDialog;
-            Task.Run(async () => { await GetProvince(); });
+            Loading = "Loading...";
+            Task.Run(
+                async () => { 
+                    await LoadProvince(); 
+                });
         }
 
-        private async Task GetProvince()
+        private async Task LoadProvince()
         {
             var rnd = new Random();
             var provinceId = rnd.Next(1, 32);
@@ -34,7 +39,7 @@ namespace MiDominicanaApp.ViewModels
                 if (provinceResponse != null)
                 {
                     var responseContent = await provinceResponse.Content.ReadAsStringAsync();
-                    province = JsonSerializer.Deserialize<Province>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                    Province = JsonSerializer.Deserialize<Province>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
                 }
             }
             else

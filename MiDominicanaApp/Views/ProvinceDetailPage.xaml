@@ -16,13 +16,16 @@
                 </Label.FormattedText>
             </Label>
 
+
+            <Label Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Loading}" HorizontalTextAlignment="Center"/>
+
             <Image
                 Grid.ColumnSpan="3"
                 Grid.Row="1"
                 WidthRequest="350"
                 HeightRequest="350"
                 Aspect="AspectFill"
-                Source="{Binding province.ImagePath}"
+                Source="{Binding Province.ImagePath}"
                 BackgroundColor="Black"
                 />
 
@@ -34,7 +37,7 @@
                 FontSize="36"
                 FontAttributes="Bold"
                 TextColor="Black"
-                Text="{Binding province.Name}"
+                Text="{Binding Province.Name}"
                 />
 
 
@@ -42,7 +45,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span FontAttributes="Bold" FontSize="Title" Text="Capital: " TextColor="Black"/>
-                        <Span Text="{Binding province.City}" FontSize="24" TextColor="Gray"/>
+                        <Span Text="{Binding Province.City}" FontSize="24" TextColor="Gray"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -51,7 +54,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span FontAttributes="Bold" FontSize="Title" Text="Superficie: " TextColor="Black"/>
-                        <Span Text="{Binding province.Surface, StringFormat='{0:#,#.00}'}" FontSize="24" TextColor="Gray"/>
+                        <Span Text="{Binding Province.Surface, StringFormat='{0:#,#.00}'}" FontSize="24" TextColor="Gray"/>
                         <Span Text=" km cuadrados" FontSize="24" TextColor="Gray"/>
                     </FormattedString>
                 </Label.FormattedText>
@@ -61,7 +64,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span FontAttributes="Bold" FontSize="Title" Text="Población: " TextColor="Black"/>
-                        <Span Text="{Binding province.Population, StringFormat='{0:#,#}'}" FontSize="24" TextColor="Gray"/>
+                        <Span Text="{Binding Province.Population, StringFormat='{0:#,#}'}" FontSize="24" TextColor="Gray"/>
                         <Span Text=" Habitantes" FontSize="24" TextColor="Gray"/>
                     </FormattedString>
                 </Label.FormattedText>
@@ -71,7 +74,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span FontAttributes="Bold" FontSize="Title" Text="Densidad: " TextColor="Black"/>
-                        <Span Text="{Binding province.Density, StringFormat='{0:#}'}" FontSize="24" TextColor="Gray"/>
+                        <Span Text="{Binding Province.Density, StringFormat='{0:#}'}" FontSize="24" TextColor="Gray"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -84,7 +87,7 @@
                 FontSize="Title"
                 FontAttributes="Bold"
                 TextColor="Black"
-                Text="{Binding province.Name, StringFormat='Sobre {0:F0}'}"
+                Text="{Binding Province.Name, StringFormat='Sobre {0:F0}'}"
                 />
 
             <Label
@@ -95,7 +98,7 @@
                 FontSize="20"
                 TextColor="Black"
                 LineBreakMode="CharacterWrap"
-                Text="{Binding province.Description}"
+                Text="{Binding Province.Description}"
                 />
         </Grid>
     </ScrollView>
