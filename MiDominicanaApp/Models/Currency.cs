@@ -10,5 +10,6 @@ namespace MiDominicanaApp.Models
         public string Name { get; set; }
         public double Purchase { get; set; }
         public double Sale { get; set; }
+        public string ImagePath { get; set; }
     }
 }
