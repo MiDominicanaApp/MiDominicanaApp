@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text.Json;
 using System.Threading.Tasks;
 using MiDominicanaApp.Models;
@@ -16,6 +17,8 @@ namespace MiDominicanaApp.ViewModels
         IMiDominicanaApiService _miDominicanaApiService;
         IPageDialogService _pageDialog;
         public string Loading { get; set; }
+        public string Date { get; set; }
+        public string UpdateMessage { get; set; }
         public ObservableCollection<Fuel> Fuels { get; set; } = new ObservableCollection<Fuel>() { };
         public FuelsViewModel(IMiDominicanaApiService miDominicanaApiService, IPageDialogService pageDialog)
         {
@@ -38,25 +41,31 @@ namespace MiDominicanaApp.ViewModels
                     var responseContent = await response.Content.ReadAsStringAsync();
                     var fuels = JsonSerializer.Deserialize<FuelResponse>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
+                    var format = "MMMM dd, yyyy";
+                    var input = DateTime.Today.ToString(format);
+                    var dt = DateTime.ParseExact(input, format, new CultureInfo("en-US"));
+                    Date = dt.ToString("dd 'de' MMMM, yyyy", new CultureInfo("es-ES"));
+                    UpdateMessage = DateTime.Now.ToString("'Actualizado por última vez el' dddd dd 'de' MMMM 'a las' HH:mm", new CultureInfo("es-ES"));
+
                     // Save Fuels
                     Fuels.Add(new Fuel()
                     {
-                        Name = "GasolinaPremium",
+                        Name = "Gasolina Premium",
                         Price = Convert.ToDouble(fuels.PremiumGasoline)
                     });
                     Fuels.Add(new Fuel()
                     {
-                        Name = "GasolinaRegular",
+                        Name = "Gasolina Regular",
                         Price = Convert.ToDouble(fuels.RegularGasoline)
                     });
                     Fuels.Add(new Fuel()
                     {
-                        Name = "GasoilOptimo",
+                        Name = "Gasoil Optimo",
                         Price = Convert.ToDouble(fuels.OptimalDiesel)
                     });
                     Fuels.Add(new Fuel()
                     {
-                        Name = "GasoilRegular",
+                        Name = "Gasoil Regular",
                         Price = Convert.ToDouble(fuels.RegularDiesel)
                     });
                     Fuels.Add(new Fuel()
@@ -66,12 +75,12 @@ namespace MiDominicanaApp.ViewModels
                     });
                     Fuels.Add(new Fuel()
                     {
-                        Name = "GasLicuadoPetroleoGLP",
+                        Name = "Gas Licuado Petroleo (GLP)",
                         Price = Convert.ToDouble(fuels.PetroleumLiquidGas)
                     });
                     Fuels.Add(new Fuel()
                     {
-                        Name = "GasNaturalVehicularGNV",
+                        Name = "Gas Natural Vehicular (GNV)",
                         Price = Convert.ToDouble(fuels.NaturalGas)
                     });
                 }
