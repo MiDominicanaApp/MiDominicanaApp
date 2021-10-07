@@ -5,6 +5,7 @@
              Title="Detalle Provincia"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True">
+    
     <StackLayout>
         <Grid Padding="30,20,30,0" RowDefinitions="Auto" ColumnDefinitions="Auto, Auto">
             <ImageButton 

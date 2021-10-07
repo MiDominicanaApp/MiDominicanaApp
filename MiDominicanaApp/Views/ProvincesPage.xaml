@@ -7,7 +7,7 @@
              prism:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <StackLayout>
-            <Grid Padding="30" RowDefinitions="Auto,Auto,*" ColumnDefinitions="Auto">
+            <Grid Padding="30,20,30,0" RowDefinitions="Auto,Auto,*" ColumnDefinitions="Auto">
                 <Label HorizontalTextAlignment="Center" Grid.Row="0" FontSize="44" FontAttributes="Bold" Padding="0,10,0,30">
                     <Label.FormattedText>
                         <FormattedString>
@@ -31,6 +31,20 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid RowDefinitions="Auto,Auto, Auto" ColumnDefinitions="Auto,*" Padding="0,10" ColumnSpacing="20">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="LightBlue" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
                                 <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding CityImagePath}" Aspect="AspectFit" WidthRequest="75" HeightRequest="75"  BackgroundColor="Transparent"/>
                                 <Label Grid.Column="1" Grid.Row="0" FontSize="Title" FontAttributes="Bold" Text="{Binding Name}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                                 <Label Grid.Column="1" Grid.Row="1" FontSize="Subtitle" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"  Text="{Binding City, StringFormat='Ciudad: {0:F0}'}" />
