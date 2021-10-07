@@ -20,14 +20,14 @@ MI Dominicana App is an App made By Dominicans where you cans seee the price of 
 - **PropertyChanged.Fody** - Add property notification to all classes that implement INotifyPropertyChanged.
 <https://github.com/Fody/PropertyChanged>
 
-- **System.Text.Json** - Provides high-performance and low-allocating types that serialize objects to JavaScript Object Notation (JSON) text and deserialize JSON text to objects, with UTF-8 support built-in. Also provides types to read and write JSON text encoded as UTF-8, and to create an in-memory document object model (DOM), that is read-only, for random access of the JSON elements within a structured view of the data.
-
-&nbsp;&nbsp;&nbsp;&nbspCommonly Used Types:
-&nbsp;&nbsp;&nbsp;&nbsp* System.Text.Json.JsonSerializer
-&nbsp;&nbsp;&nbsp;&nbsp* System.Text.Json.JsonDocument
-&nbsp;&nbsp;&nbsp;&nbsp* System.Text.Json.JsonElement
-&nbsp;&nbsp;&nbsp;&nbsp* System.Text.Json.Utf8JsonWriter
-&nbsp;&nbsp;&nbsp;&nbsp* System.Text.Json.Utf8JsonReader
+- **System.Text.Json** - Provides high-performance and low-allocating types that serialize objects to JavaScript Object Notation (JSON) text and deserialize JSON text to objects, with UTF-8 support built-in. Also provides types to read and write JSON text encoded as UTF-8, and to create an in-memory document object model (DOM), that is read-only, for random access of the JSON elements within a structured view of the data. 
+  Commonly Used Types:
+  
+  * System.Text.Json.JsonSerializer
+  * System.Text.Json.JsonDocument 
+  * System.Text.Json.JsonElement
+  * System.Text.Json.Utf8JsonWriter
+  * System.Text.Json.Utf8JsonReader
  
 When using NuGet 3.x this package requires at least version 3.4. <https://github.com/dotnet/runtime>
 
