@@ -9,8 +9,8 @@ MI Dominicana App is an App made By Dominicans where you cans seee the price of 
 ![image](https://user-images.githubusercontent.com/19848390/136345622-9ce92d9e-7e26-4547-8dd9-b4aeba95d95b.png)
 
 ## API
- Github Project <https://github.com/MiDominicanaApp/MiDominicanaApi>
- Link: <http://eladio37-001-site1.ftempurl.com/swagger/index.html>
+- Github Project <https://github.com/MiDominicanaApp/MiDominicanaApi>
+- Link: <http://eladio37-001-site1.ftempurl.com/swagger/index.html>
 
 
 
