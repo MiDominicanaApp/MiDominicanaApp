@@ -5,23 +5,17 @@
     x:Class="MiDominicanaApp.Views.FuelsPage"
     Title="Combustibles"
     xmlns:prism="http://prismlibrary.com"
-    prism:ViewModelLocator.AutowireViewModel="True">
+    prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:local="clr-namespace:MiDominicanaApp.Views">
 
     <StackLayout>
-        <Grid Padding="30,20,30,0" RowDefinitions="Auto" ColumnDefinitions="Auto">
-            <Label HorizontalTextAlignment="Center" Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"  FontSize="44" FontAttributes="Bold">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="mi" TextColor="Black"/>
-                        <Span Text="Dominicana" TextColor="Red"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </Grid>
+        <local:TitleView>
+        </local:TitleView>
+        
         
         <ScrollView>
             <Grid Padding="30" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto">
-                <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding Loading}" HorizontalTextAlignment="Center"/>
+                <Label Style="{StaticResource LoadingLabelStyle}" Text="{Binding Loading}" />
                 <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="36" TextColor="Black" Text="{Binding Date}" HorizontalOptions="Center" Padding="0,20,0,20"/>
 
                 <CollectionView 
@@ -42,12 +36,10 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <Label 
-                    Grid.Row="2" 
-                    HorizontalOptions="Center"  
-                    VerticalOptions="Center" 
-                    HorizontalTextAlignment="Center" 
-                    FontSize="30" 
+                <Label
+                    Style="{StaticResource UpdateMessageLabelStyle}"
+                    Grid.Row="2"
+                    Padding="0"
                     Text="{Binding UpdateMessage}" />
             </Grid>
         </ScrollView>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiDominicanaApp.Views.TitleView">
+  <ContentView.Content>
+        <Grid Padding="30,20,30,0" RowDefinitions="Auto" ColumnDefinitions="Auto">
+            <Label Style="{StaticResource MiDominicanaTitleLabelStyle}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="mi" TextColor="Black"/>
+                        <Span Text="Dominicana" TextColor="Red"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
