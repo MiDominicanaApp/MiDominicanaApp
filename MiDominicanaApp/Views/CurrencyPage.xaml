@@ -5,26 +5,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="http://prismlibrary.com"
     Title="Tasas Cambio"
-    prism:ViewModelLocator.AutowireViewModel="True">
-    
+    prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:local="clr-namespace:MiDominicanaApp.Views">
+
     <StackLayout>
-        <Grid Padding="30,20,30,0" RowDefinitions="Auto" ColumnDefinitions="Auto">
-            <Label HorizontalTextAlignment="Center" Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"  FontSize="44" FontAttributes="Bold">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="mi" TextColor="Black"/>
-                        <Span Text="Dominicana" TextColor="Red"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </Grid>
-        
+        <local:TitleView>
+        </local:TitleView>
+
         <ScrollView>
             <Grid Padding="30" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto, Auto">
                 <Label Grid.Row="0" Grid.Column="2" FontSize="Title" Margin="5" VerticalTextAlignment="Start" Text="Compra   " HorizontalTextAlignment="End"/>
                 <Label Grid.Row="0" Grid.Column="3" FontSize="Title" Margin="5" VerticalTextAlignment="End" Text="Venta" HorizontalTextAlignment="End"/>
 
-                <Label Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Loading}" HorizontalTextAlignment="Center"/>
+                <Label Style="{StaticResource LoadingLabelStyle}" Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Loading}"/>
 
                 <CollectionView 
                     Grid.Column="0"
@@ -47,13 +40,9 @@
                 </CollectionView>
 
                 <Label
-                    Padding="30,60,30,0"
+                    Style="{StaticResource UpdateMessageLabelStyle}"
                     Grid.Row="3" 
                     Grid.ColumnSpan="4" 
-                    HorizontalOptions="Center"  
-                    VerticalOptions="Center" 
-                    HorizontalTextAlignment="Center" 
-                    FontSize="30" 
                     Text="{Binding UpdateMessage}" />
             </Grid>
         </ScrollView>

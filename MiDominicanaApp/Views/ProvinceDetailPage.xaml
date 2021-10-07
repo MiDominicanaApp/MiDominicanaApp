@@ -8,14 +8,7 @@
     
     <StackLayout>
         <Grid Padding="30,20,30,0" RowDefinitions="Auto" ColumnDefinitions="Auto, Auto">
-            <ImageButton 
-                Source="back" 
-                BackgroundColor="Transparent" 
-                Grid.Column="0" 
-                Grid.Row="0" WidthRequest="30" 
-                HeightRequest="30" 
-                Command="{Binding GoBackCommand}"
-                />
+            <ImageButton Style="{StaticResource BackImageButtonStyle}" />
             
             <Label HorizontalTextAlignment="Center" Grid.ColumnSpan="2" Grid.Row="0"  Grid.Column="1" FontSize="44" FontAttributes="Bold">
                 <Label.FormattedText>
@@ -25,15 +18,17 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+
         </Grid>
         <ScrollView>
             <Grid Padding="30,0" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto, Auto" ColumnDefinitions="Auto, Auto">
              
-                <Label 
+                <Label
+                    Style="{StaticResource LoadingLabelStyle}"
                     Grid.Row="0" 
                     Grid.ColumnSpan="3" 
                     Text="{Binding Loading}" 
-                    HorizontalTextAlignment="Center"/>
+                    />
 
                 <Image
                     Grid.ColumnSpan="3"
@@ -56,11 +51,11 @@
                     Text="{Binding Province.Name}" />
 
 
-                <Label  Grid.ColumnSpan="3" Grid.Row="2" Margin="10,5">
+                <Label Grid.ColumnSpan="3" Grid.Row="2" Margin="10,5">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span FontAttributes="Bold" FontSize="Title" Text="Capital: " TextColor="Black"/>
-                            <Span Text="{Binding Province.City}" FontSize="24" TextColor="Gray"/>
+                            <Span Style="{StaticResource PropertyLabelStyle}" Text="Capital: " />
+                            <Span Style="{StaticResource PropertyResponseLabelStyle}" Text="{Binding Province.City}"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -68,8 +63,8 @@
                 <Label  Grid.ColumnSpan="3" Grid.Row="3" Margin="10,5" TextType="Html">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span FontAttributes="Bold" FontSize="Title" Text="Superficie: " TextColor="Black"/>
-                            <Span Text="{Binding Province.Surface, StringFormat='{0:#,#.00}'}" FontSize="24" TextColor="Gray"/>
+                            <Span Style="{StaticResource PropertyLabelStyle}" Text="Superficie: " />
+                            <Span Style="{StaticResource PropertyResponseLabelStyle}" Text="{Binding Province.Surface, StringFormat='{0:#,#.00}'}"/>
                             <Span Text=" km cuadrados" FontSize="24" TextColor="Gray"/>
                         </FormattedString>
                     </Label.FormattedText>
@@ -78,8 +73,8 @@
                 <Label  Grid.ColumnSpan="3" Grid.Row="4" Margin="10, 5">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span FontAttributes="Bold" FontSize="Title" Text="Población: " TextColor="Black"/>
-                            <Span Text="{Binding Province.Population, StringFormat='{0:#,#}'}" FontSize="24" TextColor="Gray"/>
+                            <Span Style="{StaticResource PropertyLabelStyle}" Text="Población: " />
+                            <Span Style="{StaticResource PropertyResponseLabelStyle}" Text="{Binding Province.Population, StringFormat='{0:#,#}'}" />
                             <Span Text=" Habitantes" FontSize="24" TextColor="Gray"/>
                         </FormattedString>
                     </Label.FormattedText>
@@ -88,8 +83,8 @@
                 <Label  Grid.ColumnSpan="3" Grid.Row="5" Margin="10, 5">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span FontAttributes="Bold" FontSize="Title" Text="Densidad: " TextColor="Black"/>
-                            <Span Text="{Binding Province.Density, StringFormat='{0:#}'}" FontSize="24" TextColor="Gray"/>
+                            <Span Style="{StaticResource PropertyLabelStyle}" Text="Densidad: " />
+                            <Span Style="{StaticResource PropertyResponseLabelStyle}" Text="{Binding Province.Density, StringFormat='{0:#}'}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
