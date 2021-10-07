@@ -22,6 +22,7 @@ namespace MiDominicanaApp
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>(NavigationConstants.Paths.Home);
             containerRegistry.RegisterForNavigation<FuelsPage, FuelsViewModel>(NavigationConstants.Paths.Fuels);
             containerRegistry.RegisterForNavigation<CurrencyPage, CurrencyViewModel>(NavigationConstants.Paths.Fuels);
