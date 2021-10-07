@@ -1,54 +1,37 @@
 ﻿using MiDominicanaApp.Models;
 using MiDominicanaApp.Services;
+using Prism.Navigation;
 using Prism.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace MiDominicanaApp.ViewModels
 {
-    class ProvinceDetailViewModel : BaseViewModel
+    public class ProvinceDetailViewModel : BaseViewModel, INavigatedAware
     {
-        IMiDominicanaApiService _miDominicanaApiService;
-        IPageDialogService _pageDialog;
-        public string Loading { get; set; }
+        INavigationService _navigationService;
 
+        public ICommand GoBackCommand { get; }
         public Province Province { get; set; } = new Province();
 
-        public ProvinceDetailViewModel(IMiDominicanaApiService miDominicanaApiService, IPageDialogService pageDialog)
+        public ProvinceDetailViewModel(INavigationService navigationService)
         {
-            _miDominicanaApiService = miDominicanaApiService;
-            _pageDialog = pageDialog;
-            Loading = "Loading...";
-            Task.Run(
-                async () => { 
-                    await LoadProvince(); 
-                });
+            _navigationService = navigationService;
+            GoBackCommand = new Command(async () =>
+            {
+                await _navigationService.GoBackAsync();
+            });
         }
 
-        private async Task LoadProvince()
+        public void OnNavigatedFrom(INavigationParameters parameters)
         {
-            var rnd = new Random();
-            var provinceId = rnd.Next(1, 32);
-            if(Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                var provinceResponse = await _miDominicanaApiService.GetProvinceDetailAsync(provinceId);
-                if (provinceResponse != null)
-                {
-                    var responseContent = await provinceResponse.Content.ReadAsStringAsync();
-                    Province = JsonSerializer.Deserialize<Province>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-                }
-            }
-            else
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _pageDialog.DisplayAlertAsync("Alerta", "No hay conexión a internet.", "OK");
-                });
-            }
+            throw new NotImplementedException();
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            Province = (Province)parameters["province"];
         }
     }
 }

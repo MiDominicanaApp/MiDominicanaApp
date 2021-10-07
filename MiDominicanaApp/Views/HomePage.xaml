@@ -9,11 +9,12 @@
              android:TabbedPage.BarSelectedItemColor="Red"
              Title="MiDominicana App"
              xmlns:prism="http://prismlibrary.com"
-             prism:ViewModelLocator.AutowireViewModel="True"
-            >
+             prism:ViewModelLocator.AutowireViewModel="True">
+    
     <TabbedPage.Children>
         <local:FuelsPage IconImageSource="gas"/>
         <local:CurrencyPage IconImageSource="exchange"/>
-        <local:ProvinceDetailPage IconImageSource="repdom"/>
+        <local:ProvincesPage IconImageSource="repdom"/>
     </TabbedPage.Children>
+    
 </TabbedPage>

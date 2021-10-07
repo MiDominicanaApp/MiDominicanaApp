@@ -8,7 +8,8 @@ namespace MiDominicanaApp
             public const string Home = "Home";
             public const string Fuels = "Fuels";
             public const string Currency = "Currency";
-            public const string Province = "Province";
+            public const string Provinces = "Provinces";
+            public const string ProvinceDetail = "ProvinceDetail";
         }
     }
 }
