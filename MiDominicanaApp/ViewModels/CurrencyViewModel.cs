@@ -20,7 +20,7 @@ namespace MiDominicanaApp.ViewModels
         public string UpdateMessage { get; set; }
 
         public string Loading { get; set; }
-        public ObservableCollection<Currency> CurrenciesList { get; set; } = new ObservableCollection<Currency>() { };
+        public ObservableCollection<CurrencyResponse> CurrenciesList { get; set; } = new ObservableCollection<CurrencyResponse>() { };
         public CurrencyViewModel(IMiDominicanaApiService currencyApiService, IPageDialogService pageDialog)
         {
             _currencyApiService = currencyApiService;
@@ -57,7 +57,7 @@ namespace MiDominicanaApp.ViewModels
                     int count = 0;
                     foreach (var currency in currencyList)
                     {
-                        CurrenciesList.Add(new Currency()
+                        CurrenciesList.Add(new CurrencyResponse()
                         {
                             Name = currency.Name,
                             Purchase = Convert.ToDouble(currency.Purchase),

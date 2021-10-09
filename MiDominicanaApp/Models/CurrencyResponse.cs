@@ -17,5 +17,8 @@ namespace MiDominicanaApp.Models
         [JsonPropertyName("sale")]
         public double Sale { get; set; }
 
+        [JsonPropertyName("image")]
+        public string ImagePath { get; set; }
+
     }
 }

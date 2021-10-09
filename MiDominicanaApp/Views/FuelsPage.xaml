@@ -1,45 +1,77 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="MiDominicanaApp.Views.FuelsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MiDominicanaApp.Views.FuelsPage"
-    Title="Combustibles"
+    xmlns:local="clr-namespace:MiDominicanaApp.Views"
     xmlns:prism="http://prismlibrary.com"
-    prism:ViewModelLocator.AutowireViewModel="True"
-    xmlns:local="clr-namespace:MiDominicanaApp.Views">
+    Title="Combustibles"
+    prism:ViewModelLocator.AutowireViewModel="True">
 
     <StackLayout>
-        <local:TitleView>
-        </local:TitleView>
-        
-        
-        <ScrollView>
-            <Grid Padding="30" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto">
-                <Label Style="{StaticResource LoadingLabelStyle}" Text="{Binding Loading}" />
-                <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="36" TextColor="Black" Text="{Binding Date}" HorizontalOptions="Center" Padding="0,20,0,20"/>
+        <local:TitleView />
 
-                <CollectionView 
-                    Grid.Column="0"
+
+        <ScrollView>
+            <Grid
+                Padding="30"
+                ColumnDefinitions="Auto"
+                RowDefinitions="Auto,Auto,Auto">
+                <Label Style="{StaticResource LoadingLabelStyle}" Text="{Binding Loading}" />
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Padding="0,20,0,20"
+                    FontSize="36"
+                    HorizontalOptions="Center"
+                    Text="{Binding Date}"
+                    TextColor="Black" />
+
+                <CollectionView
                     Grid.Row="1"
-                    ItemsSource="{Binding Fuels}" 
+                    Grid.Column="0"
+                    Margin="5"
                     HeightRequest="500"
-                    Margin="5">
+                    ItemsSource="{Binding Fuels}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid RowDefinitions="1*,Auto" ColumnDefinitions="Auto,Auto,*" Padding="0,10">
-                                <Label Grid.Row="0" FontSize="30" FontAttributes="Bold" Grid.Column="0" Text="•" TextColor="Red" HorizontalTextAlignment="Start"/>
-                                <Label Grid.Row="0" FontSize="24" FontAttributes="Bold" Grid.Column="1" Text="{Binding Name}"/>
-                                <Label Grid.Row="0" FontSize="24" Grid.Column="2" HorizontalTextAlignment="End"  Text="{Binding Price, StringFormat='RD$ {0:#,#.00}'}"/>
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="3" HeightRequest="1" Color="LightGray" />
+                            <Grid
+                                Padding="0,10"
+                                ColumnDefinitions="Auto,Auto,*"
+                                RowDefinitions="1*,Auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="30"
+                                    HorizontalTextAlignment="Start"
+                                    Text="•"
+                                    TextColor="Red" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="16"
+                                    Text="{Binding Name}" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    FontSize="18"
+                                    HorizontalTextAlignment="End"
+                                    Text="{Binding Price, StringFormat='RD$ {0:#,#.00}'}" />
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="3"
+                                    HeightRequest="1"
+                                    Color="LightGray" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
                 <Label
-                    Style="{StaticResource UpdateMessageLabelStyle}"
                     Grid.Row="2"
                     Padding="0"
+                    Style="{StaticResource UpdateMessageLabelStyle}"
                     Text="{Binding UpdateMessage}" />
             </Grid>
         </ScrollView>
