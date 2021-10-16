@@ -45,7 +45,7 @@ namespace MiDominicanaApp.ViewModels
             _pageDialog = pageDialog;
             _navigationService = navigationService;
             SelectedProvinceCommand = new Command<Province>(OnPlaceSelected);
-            Loading = "Loading...";
+            Loading = NavigationConstants.Loading;
             Task.Run(
                 async () =>
                 {
@@ -60,7 +60,7 @@ namespace MiDominicanaApp.ViewModels
             {
                 {"province", SelectedProvince }
             };
-            await _navigationService.NavigateAsync("ProvinceDetail", navigationParams);
+            await _navigationService.NavigateAsync(NavigationConstants.Paths.ProvinceDetail, navigationParams);
         }
 
         private async Task LoadProvinces()

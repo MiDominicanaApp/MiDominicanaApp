@@ -24,6 +24,11 @@ namespace MiDominicanaApp.ViewModels
             });
         }
 
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+           //
+        }
+
         public void OnNavigatedTo(INavigationParameters parameters)
         {
             Province = (Province)parameters["province"];

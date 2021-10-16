@@ -11,7 +11,5 @@ namespace MiDominicanaApp.ViewModels
         {
             _navigationService = navigationService;
         }
-
-        INavigationService _navigationService;
     }
 }

@@ -3,6 +3,9 @@ namespace MiDominicanaApp
 {
     public static class NavigationConstants
     {
+
+        public const string Loading = "Loading...";
+
         public static class Paths
         {
             public const string Home = "Home";

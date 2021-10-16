@@ -25,7 +25,7 @@ namespace MiDominicanaApp.ViewModels
         {
             _currencyApiService = currencyApiService;
             _pageDialog = pageDialog;
-            Loading = "Loading...";
+            Loading = NavigationConstants.Loading;
             Task.Run(async () => {
                 await LoadCurrenciesAsync();
                 Loading = "";

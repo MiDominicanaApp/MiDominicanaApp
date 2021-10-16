@@ -24,7 +24,7 @@ namespace MiDominicanaApp.ViewModels
         {
             _miDominicanaApiService = miDominicanaApiService;
             _pageDialog = pageDialog;
-            Loading = "Loading...";
+            Loading = NavigationConstants.Loading;
             Task.Run(async () => {
                 await LoadFuelsAsync();
                 Loading = "";
