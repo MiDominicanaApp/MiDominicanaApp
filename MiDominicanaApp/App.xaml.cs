@@ -7,6 +7,7 @@ using Prism.Ioc;
 using Prism.Unity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static MiDominicanaApp.NavigationConstants;
 
 namespace MiDominicanaApp
 {
@@ -17,7 +18,7 @@ namespace MiDominicanaApp
         protected override void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync("Home");
+            NavigationService.NavigateAsync(NavigationConstants.Paths.Home);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
