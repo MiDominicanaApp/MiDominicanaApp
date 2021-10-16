@@ -10,7 +10,7 @@ namespace MiDominicanaApp.Services
         [Get(Config.FuelApi)]
         Task<HttpResponseMessage> GetFuelsAsync();
 
-        [Get("/api/Currency")]
+        [Get(Config.CurrencyApi)]
         Task<HttpResponseMessage> GetCurrenciesAsync();
 
         [Get(Config.ProvinceApi)]

@@ -11,6 +11,7 @@ MI Dominicana App is an App made By Dominicans where you cans seee the price of 
 ## API
 - Github Project <https://github.com/MiDominicanaApp/MiDominicanaApi>
 - Link: <http://eladio37-001-site1.ftempurl.com/swagger/index.html>
+- Trello Link: <https://trello.com/b/IHkYeuZc/mi-dominicana-app>
 
 
 
