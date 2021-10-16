@@ -9,6 +9,6 @@ namespace MiDominicanaApp.Services
         Task<HttpResponseMessage> GetFuelsAsync();
         Task<HttpResponseMessage> GetCurrenciesAsync();
         Task<HttpResponseMessage> GetProvincesAsync();
-        Task<HttpResponseMessage> GetProvinceDetailAsync(int ID);
+        Task<HttpResponseMessage> GetProvinceDetailAsync(int provinceId);
     }
 }

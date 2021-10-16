@@ -7,24 +7,32 @@ namespace MiDominicanaApp.Services
 {
     public class MiDominicanaApiService : IMiDominicanaApiService
     {
+
+        IMiDominicanaApi _miDominicanaApi;
+
+        public MiDominicanaApiService()
+        {
+            _miDominicanaApi = RestService.For<IMiDominicanaApi>(Config.MiDominicanaApiBaseURL);
+        }
+
         public async Task<HttpResponseMessage> GetCurrenciesAsync()
         {
-            return await RestService.For<IMiDominicanaApi>(Config.MiDominicanaApiBaseURL).GetCurrenciesAsync();
+            return await _miDominicanaApi.GetCurrenciesAsync();
         }
 
         public async Task<HttpResponseMessage> GetFuelsAsync()
         {
-            return await RestService.For<IMiDominicanaApi>(Config.MiDominicanaApiBaseURL).GetFuelsAsync();
+            return await _miDominicanaApi.GetFuelsAsync();
         }
 
-        public async Task<HttpResponseMessage> GetProvinceDetailAsync(int ID)
+        public async Task<HttpResponseMessage> GetProvinceDetailAsync(int provinceId)
         {
-            return await RestService.For<IMiDominicanaApi>(Config.MiDominicanaApiBaseURL).GetProvinceDetailAsync(ID);
+            return await _miDominicanaApi.GetProvinceDetailAsync(provinceId);
         }
 
         public async Task<HttpResponseMessage> GetProvincesAsync()
         {
-            return await RestService.For<IMiDominicanaApi>(Config.MiDominicanaApiBaseURL).GetProvincesAsync();
+            return await _miDominicanaApi.GetProvincesAsync();
         }
     }
 }

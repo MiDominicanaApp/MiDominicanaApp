@@ -17,6 +17,6 @@ namespace MiDominicanaApp.Services
         Task<HttpResponseMessage> GetProvincesAsync();
 
         [Get("/api/Province/{id}")]
-        Task<HttpResponseMessage> GetProvinceDetailAsync(int ID);
+        Task<HttpResponseMessage> GetProvinceDetailAsync(int provinceId);
     }
 }

@@ -89,7 +89,7 @@ namespace MiDominicanaApp.ViewModels
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await _pageDialog.DisplayAlertAsync("Alerta", "No hay conexión a internet.", "OK");
+                    await _pageDialog.DisplayAlertAsync("Alerta", Alert.NoInternetConnection, "OK");
                 });
             }
         }
