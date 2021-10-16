@@ -42,17 +42,9 @@ namespace MiDominicanaApp.ViewModels
                     var responseString = await currencyResponse.Content.ReadAsStringAsync();
                     var currencyList = JsonSerializer.Deserialize<List<CurrencyResponse>>(responseString, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-
-                    var format = "MMMM dd, yyyy";
-                    var input = DateTime.Today.ToString(format);
-                    var dt = DateTime.ParseExact(input, format, new CultureInfo("en-US"));
-                    UpdateMessage = DateTime.Now.ToString("'Actualizado por última vez el' dddd dd 'de' MMMM 'a las' HH:mm", new CultureInfo("es-ES"));
-
-                    string[] flags = new string[] { 
-                    "usa.png",
-                    "canada.png",
-                    "euro.png"
-                    };
+                    var input = DateTime.Today.ToString(Constants.DateFormat);
+                    var dt = DateTime.ParseExact(input, Constants.DateFormat, new CultureInfo("en-US"));
+                    UpdateMessage = DateTime.Now.ToString(Constants.UpdatedMessage, new CultureInfo("es-ES"));
 
                     int count = 0;
                     foreach (var currency in currencyList)
@@ -62,7 +54,7 @@ namespace MiDominicanaApp.ViewModels
                             Name = currency.Name,
                             Purchase = Convert.ToDouble(currency.Purchase),
                             Sale = Convert.ToDouble(currency.Sale),
-                            ImagePath = flags[count]
+                            ImagePath = Flags[count]
                         });
                         count++;
                     }
@@ -76,6 +68,13 @@ namespace MiDominicanaApp.ViewModels
                     await _pageDialog.DisplayAlertAsync("Alerta", Alert.NoInternetConnection, "OK");
                 });
             }
+
         }
+
+        public readonly string[] Flags = new string[] {
+                    "usa.png",
+                    "canada.png",
+                    "euro.png"
+                    };
     }
 }

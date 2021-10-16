@@ -12,7 +12,10 @@ namespace MiDominicanaApp.Services
 
         public MiDominicanaApiService()
         {
-            _miDominicanaApi = RestService.For<IMiDominicanaApi>(Config.MiDominicanaApiBaseURL);
+            Task.Run(() =>
+            {
+                _miDominicanaApi = RestService.For<IMiDominicanaApi>(Config.MiDominicanaApiBaseURL);
+            });
         }
 
         public async Task<HttpResponseMessage> GetCurrenciesAsync()

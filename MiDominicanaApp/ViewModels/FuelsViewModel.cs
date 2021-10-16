@@ -41,11 +41,10 @@ namespace MiDominicanaApp.ViewModels
                     var responseContent = await response.Content.ReadAsStringAsync();
                     var fuels = JsonSerializer.Deserialize<FuelResponse>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-                    var format = "MMMM dd, yyyy";
-                    var input = DateTime.Today.ToString(format);
-                    var dt = DateTime.ParseExact(input, format, new CultureInfo("en-US"));
+                    var input = DateTime.Today.ToString(Constants.DateFormat);
+                    var dt = DateTime.ParseExact(input, Constants.DateFormat, new CultureInfo("en-US"));
                     Date = dt.ToString("dd 'de' MMMM, yyyy", new CultureInfo("es-ES"));
-                    UpdateMessage = DateTime.Now.ToString("'Actualizado por última vez el' dddd dd 'de' MMMM 'a las' HH:mm", new CultureInfo("es-ES"));
+                    UpdateMessage = DateTime.Now.ToString(Constants.UpdatedMessage, new CultureInfo("es-ES"));
 
                     // Save Fuels
                     Fuels.Add(new Fuel()
